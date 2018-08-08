@@ -1,0 +1,14 @@
+<h2>Login</h2>
+<form (submit)="onLoginSubmit()">
+  <div class="form-group">
+    <label>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" >
+    </label>
+  </div>
+  <div class="form-group">
+      <label>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" >
+      </label>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+</form>

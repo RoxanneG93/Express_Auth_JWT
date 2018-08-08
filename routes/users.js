@@ -12,11 +12,11 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get("/signup", function (req, res, next) {
-  res.render('signup')
+router.get("/register", function (req, res, next) {
+  res.render('register')
 });
 
-router.post('/signup', function (req, res, next) {
+router.post('/register', function (req, res, next) {
   // setting variable and calling hasPassword method
   const hashedPassword = auth.hashPassword(req.body.password);
   models.users.findOne({
@@ -78,10 +78,10 @@ router.post('/login', function (req, res, next) {
       const userId = user.UserId
       const token = auth.signUser(user);
       res.cookie('jwt', token);
-      res.redirect('profile/' + userId)
+      // res.redirect('profile/' + userId)
     } else {
       console.log(req.body.password);
-      res.redirect('login')
+      // res.redirect('login')
     }
 
   });

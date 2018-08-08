@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 const passport = require('passport');
+const cors = require('cors');
 
 // importing Models
 var models = require('./models');
@@ -22,7 +23,8 @@ models.sequelize.sync().then(function () {
   console.log("DB Sync'd up")
 });
 
-
+// Addition of CORS
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // PASSPORT CONFIG
 app.use(require('express-session')({
